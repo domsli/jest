@@ -128,6 +128,7 @@ const groupOptions = (
     detectLeaks: options.detectLeaks,
     detectOpenHandles: options.detectOpenHandles,
     errorOnDeprecated: options.errorOnDeprecated,
+    errorOnObsoleteSnapshots: options.errorOnObsoleteSnapshots,
     expand: options.expand,
     filter: options.filter,
     findRelatedTests: options.findRelatedTests,

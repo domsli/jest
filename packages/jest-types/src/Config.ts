@@ -74,6 +74,7 @@ export type DefaultOptions = {
   detectLeaks: boolean;
   detectOpenHandles: boolean;
   errorOnDeprecated: boolean;
+  errorOnObsoleteSnapshots: boolean;
   expand: boolean;
   extensionsToTreatAsEsm: Array<string>;
   forceCoverageMatch: Array<string>;
@@ -156,6 +157,7 @@ export type InitialOptions = Partial<{
   detectLeaks: boolean;
   detectOpenHandles: boolean;
   displayName: string | DisplayName;
+  errorOnObsoleteSnapshots: boolean;
   expand: boolean;
   extensionsToTreatAsEsm: Array<string>;
   filter: string;
@@ -225,6 +227,7 @@ export type InitialOptions = Partial<{
   snapshotSerializers: Array<string>;
   snapshotFormat: SnapshotFormat;
   errorOnDeprecated: boolean;
+  errorOnObsoleteSnapshots: boolean;
   testEnvironment: string;
   testEnvironmentOptions: Record<string, unknown>;
   testFailureExitCode: string | number;
@@ -301,6 +304,7 @@ export type GlobalConfig = {
   coverageThreshold?: CoverageThreshold;
   detectLeaks: boolean;
   detectOpenHandles: boolean;
+  errorOnObsoleteSnapshots: boolean;
   expand: boolean;
   filter?: string;
   findRelatedTests: boolean;
@@ -433,6 +437,7 @@ export type Argv = Arguments<
     coverageThreshold: string;
     debug: boolean;
     env: string;
+    errorOnObsoleteSnapshots: boolean;
     expand: boolean;
     findRelatedTests: boolean;
     forceExit: boolean;

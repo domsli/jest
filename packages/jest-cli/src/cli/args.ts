@@ -255,6 +255,11 @@ export const options = {
     description: 'Make calling deprecated APIs throw helpful error messages.',
     type: 'boolean',
   },
+  errorOnObsoleteSnapshots: {
+    description:
+      'Use this flag to fail tests when there are obsolete snapshots',
+    type: 'boolean'
+  },
   expand: {
     alias: 'e',
     description: 'Use this flag to show full diffs instead of a patch.',

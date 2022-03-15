@@ -24,6 +24,7 @@ import {
 
 export type SnapshotStateOptions = {
   updateSnapshot: Config.SnapshotUpdateState;
+  errorOnObsoleteSnapshots: boolean;
   prettierPath: string;
   expand?: boolean;
   snapshotFormat: PrettyFormatOptions;
@@ -57,6 +58,7 @@ export default class SnapshotState {
   // @ts-expect-error
   private _index: number;
   private _updateSnapshot: Config.SnapshotUpdateState;
+  private _errorOnObsoleteSnapshots: boolean;
   private _snapshotData: SnapshotData;
   private _initialData: SnapshotData;
   private _snapshotPath: string;
@@ -91,6 +93,7 @@ export default class SnapshotState {
     this.unmatched = 0;
     this._updateSnapshot = options.updateSnapshot;
     this.updated = 0;
+    this._errorOnObsoleteSnapshots = options.errorOnObsoleteSnapshots;
     this._snapshotFormat = options.snapshotFormat;
   }
 
@@ -209,7 +212,9 @@ export default class SnapshotState {
       serialize(received, undefined, this._snapshotFormat),
     );
     const expected = isInline ? inlineSnapshot : this._snapshotData[key];
-    const pass = expected === receivedSerialized;
+    const hasObsoleteSnapshots =
+    const pass = (expected === receivedSerialized) &&
+      !(errorOnObsoleteSnapshots && hasObsoleteSnapshots);
     const hasSnapshot = expected !== undefined;
     const snapshotIsPersisted = isInline || fs.existsSync(this._snapshotPath);
 

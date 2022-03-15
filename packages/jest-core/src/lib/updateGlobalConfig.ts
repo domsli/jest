@@ -71,6 +71,10 @@ export default function updateGlobalConfig(
     newConfig.coverageReporters = options.coverageReporters;
   }
 
+  if (options.errorOnObsoleteSnapshots !== undefined) {
+    newConfig.errorOnObsoleteSnapshots = options.errorOnObsoleteSnapshots || false;
+  }
+
   if (options.findRelatedTests !== undefined) {
     newConfig.findRelatedTests = options.findRelatedTests;
   }

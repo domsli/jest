@@ -1,0 +1,26 @@
+How to pass down the flag into the code?
+
+setFromArgv.ts might be what is used to set into Config.InitialOptions
+
+normalize.ts consumes setFromArgv. In this, the type is somehow merged from Argv to InitialOptions to AllOptions = ProjectConfig & GlobalConfig
+
+jest-config/index.ts consumes normalize
+
+jestAdapterInit.ts has the `initialize` method which sets SnapshotState based on the globalConfig 
+
+What is the condition for having obsolete snapshots?
+
+getSnapshotStatus and getSnapshotSummary seems to have the conditions. What is the difference between the two?
+
+From getSnapshotSummary, the condition is: (unchecked && !didUpdate) || (filesRemoved && !didUpdate)
+From getSnapshotStatus, the condition is: (unchecked && !afterUpdate)
+  - According to DefaultReporter.ts, afterUpdate = this._globalConfig.updateSnapshot === 'all'
+
+The unchecked and filedRemoved etc. come from SnapshotSummary. Part of the question is how are these populated.
+
+I think the answer stems from TestScheduler where the tests are run...
+
+
+
+
+Maybe jest-reporters utils.ts has something It is very similar to getSnapshotSummary/Status in that it also has strings for reporting

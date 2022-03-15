@@ -158,6 +158,7 @@ export const initialize = async ({
     prettierPath: config.prettierPath,
     snapshotFormat: config.snapshotFormat,
     updateSnapshot: globalConfig.updateSnapshot,
+    errorOnObsoleteSnapshots: globalConfig.errorOnObsoleteSnapshots
   });
 
   jestExpect.setState({snapshotState, testPath});
